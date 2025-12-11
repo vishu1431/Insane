@@ -51,22 +51,21 @@ public class TenantRequestDTO {
     private String bankIfsc;
     private String bankName;
     private String bankBranch;
+    
+    private String panNumber;
+    private String aadhaarNumber;
+    private String gstNumber;
+    private String cinNumber;
 
-    private String directorPanFile;
-    private String directorAadhaarFile;
-    private String gstFile;
-    private String partnershipDeedFile;
-    private String msmeFile;
-    private String cancelChequeFile;
-    private String firmPanFile;
-    private String cinFile;
+  
 
     private Boolean panVerified;
     private Boolean aadhaarVerified;
     private Boolean gstVerified;
     private Boolean cinVerified;
-
     private String notes;
+    
+    private DocumentsDTO documents;
     private List<AgencyDTO> agencies;
 	
 	

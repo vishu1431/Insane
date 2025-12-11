@@ -30,5 +30,12 @@ public class TenantMasterService {
         // ENTITY → RESPONSE DTO
         return tenantMasterMapper.toResponse(saved);
     }
+    
+    public TenantResponseDTO getTenantById(Long id) {
+        TenantMaster tenant = tenantMasterRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Tenant not found with id: " + id));
+
+        return tenantMasterMapper.toResponse(tenant);
+    }
 
 }

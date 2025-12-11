@@ -12,6 +12,7 @@ import com.insane.dto.AgencyDTO;
 import com.insane.dto.TenantRequestDTO;
 import com.insane.dto.TenantResponseDTO;
 import com.insane.entity.Agency;
+import com.insane.entity.Documents;
 import com.insane.entity.TenantMaster;
 import com.insane.pojo.AddressDetails;
 import com.insane.pojo.KycDetails;
@@ -24,9 +25,17 @@ public class TenantMapper {
 
 	@Autowired
 	private AgencyMapper agencyMapper;
+	
+	@Autowired
+	private DocumentsMapper documentsMapper;
 
 	public TenantMaster toEntity(TenantRequestDTO dto) throws JsonProcessingException {
 		TenantMaster t = new TenantMaster();
+
+		t.setPanNumber(dto.getPanNumber());
+		t.setAadhaarNumber(dto.getAadhaarNumber());
+		t.setGstNumber(dto.getGstNumber());
+		t.setCinNumber(dto.getCinNumber());
 
 		t.setTenantType(dto.getTenantType());
 		t.setTenantStatus(dto.getTenantStatus());
@@ -68,15 +77,6 @@ public class TenantMapper {
 		t.setBankName(dto.getBankName());
 		t.setBankBranch(dto.getBankBranch());
 
-		t.setDirectorPanFile(dto.getDirectorPanFile());
-		t.setDirectorAadhaarFile(dto.getDirectorAadhaarFile());
-		t.setGstFile(dto.getGstFile());
-		t.setPartnershipDeedFile(dto.getPartnershipDeedFile());
-		t.setMsmeFile(dto.getMsmeFile());
-		t.setCancelChequeFile(dto.getCancelChequeFile());
-		t.setFirmPanFile(dto.getFirmPanFile());
-		t.setCinFile(dto.getCinFile());
-
 		t.setPanVerified(dto.getPanVerified());
 		t.setAadhaarVerified(dto.getAadhaarVerified());
 		t.setGstVerified(dto.getGstVerified());
@@ -90,12 +90,24 @@ public class TenantMapper {
 			agencies.forEach(a -> a.setTenantmaster(t));
 			t.setAgencies(agencies);
 		}
+		
+		if (dto.getDocuments() != null) {
+		    Documents docs = documentsMapper.toEntity(dto.getDocuments());
+
+		    docs.setTenant(t); // ⭐ MOST IMPORTANT – relation set karega
+		    t.setDocuments(docs);
+		}
 
 		return t;
 	}
 
 	public TenantResponseDTO toResponse(TenantMaster t) {
 		TenantResponseDTO dto = new TenantResponseDTO();
+
+		dto.setPanNumber(t.getPanNumber());
+		dto.setAadhaarNumber(t.getAadhaarNumber());
+		dto.setGstNumber(t.getGstNumber());
+		dto.setCinNumber(t.getCinNumber());
 
 		dto.setTenantId(t.getTenantId());
 		dto.setTenantType(t.getTenantType());
@@ -136,19 +148,13 @@ public class TenantMapper {
 		dto.setBankName(t.getBankName());
 		dto.setBankBranch(t.getBankBranch());
 
-		dto.setDirectorPanFile(t.getDirectorPanFile());
-		dto.setDirectorAadhaarFile(t.getDirectorAadhaarFile());
-		dto.setGstFile(t.getGstFile());
-		dto.setPartnershipDeedFile(t.getPartnershipDeedFile());
-		dto.setMsmeFile(t.getMsmeFile());
-		dto.setCancelChequeFile(t.getCancelChequeFile());
-		dto.setFirmPanFile(t.getFirmPanFile());
-		dto.setCinFile(t.getCinFile());
+	
 
 		dto.setPanVerified(t.getPanVerified());
 		dto.setAadhaarVerified(t.getAadhaarVerified());
 		dto.setGstVerified(t.getGstVerified());
 		dto.setCinVerified(t.getCinVerified());
+		dto.setDocuments(documentsMapper.toDto(t.getDocuments()));
 
 		dto.setNotes(t.getNotes());
 

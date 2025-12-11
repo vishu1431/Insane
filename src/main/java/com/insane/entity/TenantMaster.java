@@ -99,16 +99,7 @@ public class TenantMaster {
     private String gstNumber;
     private String cinNumber;
     
-    private String directorPanFile;
-    private String directorAadhaarFile;
-    private String gstFile;
-    private String partnershipDeedFile;
-    private String msmeFile;
-    private String cancelChequeFile;
-    private String firmPanFile;
-    private String cinFile;
-
-    // Verification flags
+   // Verification flags
     private Boolean panVerified;
     private Boolean aadhaarVerified;
     private Boolean gstVerified;
@@ -126,6 +117,9 @@ public class TenantMaster {
     //Mapping with Agency Table
     @OneToMany(mappedBy = "tenantmaster", cascade = CascadeType.ALL)
     private List<Agency> agencies;
+    
+    @OneToOne(mappedBy = "tenant", cascade = CascadeType.ALL)
+    private Documents documents;
     
 }
 

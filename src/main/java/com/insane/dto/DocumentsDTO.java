@@ -3,7 +3,9 @@ package com.insane.dto;
 import lombok.Data;
 
 @Data
-public class DocumentDTO {
+public class DocumentsDTO {
+	
+	 private Long id;
 	
 	
 	    private String directorPanFile;

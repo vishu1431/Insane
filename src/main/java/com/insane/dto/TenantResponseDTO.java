@@ -52,15 +52,13 @@ public class TenantResponseDTO {
     private String bankIfsc;
     private String bankName;
     private String bankBranch;
+    
+    private String panNumber;
+    private String aadhaarNumber;
+    private String gstNumber;
+    private String cinNumber;
 
-    private String directorPanFile;
-    private String directorAadhaarFile;
-    private String gstFile;
-    private String partnershipDeedFile;
-    private String msmeFile;
-    private String cancelChequeFile;
-    private String firmPanFile;
-    private String cinFile;
+  
 
     private Boolean panVerified;
     private Boolean aadhaarVerified;
@@ -71,6 +69,8 @@ public class TenantResponseDTO {
 
     private String createdAt;
     private String updatedAt;
+    
+    private DocumentsDTO documents;
     private List<AgencyDTO> agencies;
 
    
