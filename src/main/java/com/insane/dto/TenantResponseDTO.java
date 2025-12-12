@@ -58,15 +58,12 @@ public class TenantResponseDTO {
     private String gstNumber;
     private String cinNumber;
 
-  
-
     private Boolean panVerified;
     private Boolean aadhaarVerified;
     private Boolean gstVerified;
     private Boolean cinVerified;
 
     private String notes;
-
     private String createdAt;
     private String updatedAt;
     
