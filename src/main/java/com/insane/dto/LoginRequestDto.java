@@ -1,16 +1,19 @@
 package com.insane.dto;
 
-import com.sun.istack.NotNull;
-
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class LoginRequestDto {
+	
 
-    @NotNull
-    private String mobileNumber;
+    @NotBlank
+    private String username;
+
+    @NotBlank
+    private String password;
 }

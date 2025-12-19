@@ -5,10 +5,9 @@ import lombok.Data;
 @Data
 public class DocumentsDTO {
 	
-	 private Long id;
+	    private Long id;
 	
-	
-	    private String directorPanFile;
+        private String directorPanFile;
 	    
 	    private String directorAadhaarFile;
 	    

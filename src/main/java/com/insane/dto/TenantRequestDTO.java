@@ -1,6 +1,7 @@
 package com.insane.dto;
 
 import java.util.List;
+import java.util.Map;
 
 import com.insane.pojo.AddressDetails;
 import com.insane.pojo.KycDetails;
@@ -13,14 +14,12 @@ public class TenantRequestDTO {
 	private String tenantType;
     private String tenantStatus;
     private String authMode;
-
     private String companyName;
     private String firstName;
     private String lastName;
 
     private String email;
     private String mobile;
-
     private String referralCode;
     private Integer agentsUnderDistributor;
 
@@ -33,7 +32,7 @@ public class TenantRequestDTO {
     private Boolean agreementAccepted;
     private String password;
 
-    private Object callbackUrls;  
+    private Map<String, String> callbackUrls;  
     private Object ipWhitelist;
 
     private String wlLogo;
@@ -56,8 +55,10 @@ public class TenantRequestDTO {
     private String aadhaarNumber;
     private String gstNumber;
     private String cinNumber;
-
-  
+    
+    private String location;
+    private Double latitude;
+    private Double longitude;
 
     private Boolean panVerified;
     private Boolean aadhaarVerified;

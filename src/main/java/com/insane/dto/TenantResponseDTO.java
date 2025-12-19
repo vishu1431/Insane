@@ -62,6 +62,10 @@ public class TenantResponseDTO {
     private Boolean aadhaarVerified;
     private Boolean gstVerified;
     private Boolean cinVerified;
+    
+    private String location;
+    private Double latitude;
+    private Double longitude;
 
     private String notes;
     private String createdAt;

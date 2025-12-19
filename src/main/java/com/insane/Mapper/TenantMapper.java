@@ -16,6 +16,7 @@ import com.insane.entity.Documents;
 import com.insane.entity.TenantMaster;
 import com.insane.pojo.AddressDetails;
 import com.insane.pojo.KycDetails;
+import com.insane.util.MaskingUtil;
 
 @Component
 public class TenantMapper {
@@ -28,6 +29,9 @@ public class TenantMapper {
 	
 	@Autowired
 	private DocumentsMapper documentsMapper;
+	
+	@Autowired
+	private MaskingUtil maskingUtil;
 
 	public TenantMaster toEntity(TenantRequestDTO dto) throws JsonProcessingException {
 		TenantMaster t = new TenantMaster();
@@ -51,9 +55,7 @@ public class TenantMapper {
 		t.setMobileVerified(dto.getMobileVerified());
 		t.setAddressDetails(dto.getAddressDetails());
 		t.setKycDetails(dto.getKycDetails());
-
-		String callbackJson = objectMapper.writeValueAsString(dto.getCallbackUrls());
-		t.setCallbackUrls(callbackJson);
+		t.setCallbackUrls(dto.getCallbackUrls());
 
 		String ipJson = objectMapper.writeValueAsString(dto.getIpWhitelist());
 		t.setIpWhitelist(ipJson);
@@ -81,6 +83,9 @@ public class TenantMapper {
 		t.setAadhaarVerified(dto.getAadhaarVerified());
 		t.setGstVerified(dto.getGstVerified());
 		t.setCinVerified(dto.getCinVerified());
+		t.setLocation(dto.getLocation());
+		t.setLatitude(dto.getLatitude());
+		t.setLongitude(dto.getLongitude());
 
 		t.setNotes(dto.getNotes());
 
@@ -104,11 +109,10 @@ public class TenantMapper {
 	public TenantResponseDTO toResponse(TenantMaster t) {
 		TenantResponseDTO dto = new TenantResponseDTO();
 
-		dto.setPanNumber(t.getPanNumber());
-		dto.setAadhaarNumber(t.getAadhaarNumber());
+		dto.setPanNumber(MaskingUtil.maskPan(t.getPanNumber()));
+		dto.setAadhaarNumber(MaskingUtil.maskAadhaar(t.getAadhaarNumber()));
 		dto.setGstNumber(t.getGstNumber());
 		dto.setCinNumber(t.getCinNumber());
-
 		dto.setTenantId(t.getTenantId());
 		dto.setTenantType(t.getTenantType());
 		dto.setTenantStatus(t.getTenantStatus());
@@ -142,22 +146,21 @@ public class TenantMapper {
 		dto.setSecondaryMobile(t.getSecondaryMobile());
 		dto.setBenefitTds(t.getBenefitTds());
 		dto.setBookingTds(t.getBookingTds());
-
 		dto.setBankAccountNumber(t.getBankAccountNumber());
 		dto.setBankIfsc(t.getBankIfsc());
 		dto.setBankName(t.getBankName());
 		dto.setBankBranch(t.getBankBranch());
 
-	
+		dto.setLocation(t.getLocation());
+		dto.setLatitude(t.getLatitude());
+		dto.setLongitude(t.getLongitude());
 
 		dto.setPanVerified(t.getPanVerified());
 		dto.setAadhaarVerified(t.getAadhaarVerified());
 		dto.setGstVerified(t.getGstVerified());
 		dto.setCinVerified(t.getCinVerified());
 		dto.setDocuments(documentsMapper.toDto(t.getDocuments()));
-
 		dto.setNotes(t.getNotes());
-
 		dto.setCreatedAt(t.getCreatedAt().toString());
 		dto.setUpdatedAt(t.getUpdatedAt().toString());
 

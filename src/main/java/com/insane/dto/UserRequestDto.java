@@ -2,7 +2,7 @@ package com.insane.dto;
 
 import com.insane.Enum.AgentType;
 import com.insane.Enum.Role;
-import com.sun.istack.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -16,6 +16,7 @@ import com.insane.pojo.KycDetails;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 @Data
 @Entity
 @Table(name = "tenant_master")
@@ -62,7 +63,7 @@ public class TenantMaster {
     
      @Column(columnDefinition = "jsonb")
      @JdbcTypeCode(SqlTypes.JSON)
-    private String callbackUrls;
+    private Map<String, String> callbackUrls;
 
     @Column(columnDefinition = "jsonb")
     @JdbcTypeCode(SqlTypes.JSON)
@@ -75,15 +76,15 @@ public class TenantMaster {
     // Preferences
     private String mobileAppOrWeb;
     private String location;
+    private Double latitude;
+    private Double longitude;
 
     // Profile
     private String profilePhoto;
     private String dob;
     private String gender;
-
     private String country;
     private String secondaryMobile;
-
     private String benefitTds;
     private String bookingTds;
 
@@ -104,10 +105,8 @@ public class TenantMaster {
     private Boolean aadhaarVerified;
     private Boolean gstVerified;
     private Boolean cinVerified;
-
     private String notes;
 
-    
     @CreationTimestamp
     private LocalDateTime createdAt;
 
@@ -128,12 +127,8 @@ public class TenantMaster {
     // ==========================
     // ENUMS
     // ==========================
-  //{ API_KEY, OAUTH }
-    
-    
- 
-    
-    //company name - class - 
+    //{ API_KEY, OAUTH }
+   //company name - class - 
     
     //temp address
     //permanent address
