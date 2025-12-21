@@ -56,7 +56,7 @@ public class AuthService {
         response.setAccessToken(accessToken);
         response.setTokenType("Bearer");
         response.setRefreshToken(refresh.getRefreshToken());
-        response.setExpiresIn(900);
+        response.setExpiresIn(1000);
 
         return response;
     }
@@ -92,7 +92,7 @@ public class AuthService {
         response.setAccessToken(newAccessToken);
         response.setTokenType("Bearer");
         response.setRefreshToken(newRefresh.getRefreshToken());
-        response.setExpiresIn(900);
+        response.setExpiresIn(1000);
 
         return response;
     }

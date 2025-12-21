@@ -15,7 +15,7 @@ public class JwtUtil {
     private static final String SECRET =
             "insane-secret-key-insane-secret-key-123456";
 
-    private static final long EXPIRY = 15 * 60 * 1000; // 15 min
+    private static final long EXPIRY = 30 * 60 * 1000; // 30 min
 
     private final SecretKey key = Keys.hmacShaKeyFor(SECRET.getBytes());
 
