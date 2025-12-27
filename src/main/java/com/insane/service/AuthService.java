@@ -15,7 +15,10 @@ import com.insane.repository.LoginUserRepository;
 import com.insane.repository.RefreshTokenRepository;
 import com.insane.security.JwtUtil;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class AuthService {
 
     private final LoginUserRepository userRepo;

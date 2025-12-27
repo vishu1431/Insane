@@ -150,11 +150,9 @@ public class TenantMapper {
 		dto.setBankIfsc(t.getBankIfsc());
 		dto.setBankName(t.getBankName());
 		dto.setBankBranch(t.getBankBranch());
-
 		dto.setLocation(t.getLocation());
 		dto.setLatitude(t.getLatitude());
 		dto.setLongitude(t.getLongitude());
-
 		dto.setPanVerified(t.getPanVerified());
 		dto.setAadhaarVerified(t.getAadhaarVerified());
 		dto.setGstVerified(t.getGstVerified());

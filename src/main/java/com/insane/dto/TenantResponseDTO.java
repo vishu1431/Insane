@@ -71,7 +71,7 @@ public class TenantResponseDTO {
     private String createdAt;
     private String updatedAt;
     
-    private DocumentsDTO documents;
+    private DocumentsResponseDTO documents;
     private List<AgencyDTO> agencies;
 
    
